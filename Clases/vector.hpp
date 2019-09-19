@@ -19,6 +19,9 @@ public: //si permite acceder directamente
   void set_y(double n){
     y=n;
   }
+
+  double get_x();
+  double get_y();
 };
 
 #endif
