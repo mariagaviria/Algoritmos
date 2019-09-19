@@ -1,36 +1,27 @@
-#include <iostream>
-#include <vector>
-#include <math.h>
-
+#include<iostream>
 
 using namespace std;
 
-void print(vector<int> &s){
-	for (unsigned int i=0; i<s.size(); i++){
-		cout << ' ' << s[i]; 
-	}
-	cout << '\n'; 
-	
+int kpot(int n, int k){
+  if (k==0){
+    return 1;
+  }else{
+    return n*kpot(n, k-1);
+  }
 }
 
-vector<int> menor(vector<int> &w){
-	for (unsigned int i=w.size(); i>1; i--){
-		if (w[i] >=100){
-			w.pop_back();
-		}
-	}
-	return w;
-}
+int main() {
+  cout << "Ingrese un numero: ";
+  int base;
+  cin >> base;
 
-int main(){
-	vector<int> vec;
-	for (unsigned int i=0; i<11; i++){
-		vec.push_back(pow(3, i));
-	}
-	print(vec);
-	vector<int> x=menor(vec);
-	print(x);
+  cout << "Que potencia de " << base << " quiere?: ";
+  int pot;
+  cin >> pot;
 
-	
-	return 0;
+  int x=kpot(base, pot);
+
+  cout << base << " a la " << pot << " es: "<< x << endl;
+
+  return 0;
 }
