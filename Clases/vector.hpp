@@ -12,13 +12,9 @@ public: //si permite acceder directamente
 
   double norm();
 
-  void set_x(double v){
-    x=v;
-  }
+  void set_x(double v);
 
-  void set_y(double n){
-    y=n;
-  }
+  void set_y(double n);
 
   double get_x();
   double get_y();
