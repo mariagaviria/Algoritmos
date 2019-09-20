@@ -1,0 +1,3 @@
+g++ -c clase.cpp
+g++ main.cpp clase.o
+./a.out
