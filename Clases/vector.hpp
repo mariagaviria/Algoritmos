@@ -1,5 +1,5 @@
-#ifndef __vector_hpp
-#define __vector_hpp
+#ifndef __vector_hpp_
+#define __vector_hpp_
 
 class Vector2D{
 private: // no se puede acceder directamente, ej: p.x -> NO se puede
@@ -18,6 +18,13 @@ public: //si permite acceder directamente
 
   double get_x();
   double get_y();
+
+  void operator=(Vector2D a); //sobrecargando el operador '='
+  //Vector2D operator+(Vector2D a); // sobrecargando el operador '+'
 };
 
-#endif
+Vector2D operator+(Vector2D &a, Vector2D &b);
+double operator*(Vector2D &a, Vector2D &b); // sobrecargando el operador '*' como producto punto
+Vector2D operator*(Vector2D &a, double x); // sobrecargando el operador '*' como producto escalar
+Vector2D operator*(double x, Vector2D &a);
+#endif //__vector_hpp_
