@@ -1,0 +1,2 @@
+g++ main.cpp plantilla.hpp
+./a.out
