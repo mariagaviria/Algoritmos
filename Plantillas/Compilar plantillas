@@ -1,2 +1,5 @@
 g++ main.cpp plantilla.hpp
 ./a.out
+
+En las plantillas no se crea otro documento .cpp para definir que hace cada función, sino que te define en el mismo archivo .hpp
+ya que las funciones van a depender del "typename T".
