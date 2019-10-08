@@ -1,112 +1,68 @@
 #include "simple_vector.hpp"
-
 /*
  * CLASS BidirIterator METHODS ---------------------------------------------
  */
-BidirIterator :: BidirIterator(double *beg){
+BidirIterator::BidirIterator(double *beg){
   ptr = beg;
 }
-
-//---------------------DAVID----------------------
-//igual al mio
-//------------------------------------------------
-
-BidirIterator :: BidirIterator(const BidirIterator &it){
-  ptr = it.ptr;
-  //this->ptr=it.ptr;
-}
-
-//double BidirIterator:: &operator*(){
-//}
-//http://www.it.uc3m.es/pbasanta/asng/course_notes/pointers_to_pointers_es.html
-
-//---------------------DAVID----------------------
-//double & operator++(){
-//  return *ptr;
-//}
-//------------------------------------------------
-
-//Sobrecargar operadores -> https://docs.microsoft.com/es-es/cpp/cpp/increment-and-decrement-operator-overloading-cpp?view=vs-2019
-
-// BidirIterator BidirIterator:: &operator++(){
-//   ptr
-// }
-
-//---------------------DAVID----------------------
-//BidirIterator & operator++(){
-//  ptr++;
-//  return *this;
-//}
-//------------------------------------------------
-
-//BidirIterator BidirIterator:: operator++(int){
-//}
-
-//---------------------DAVID----------------------
-//BidirIterator operator++(int x){
-//  BidirIterator oldCopy=*this;
-//  ptr++;
-//  return oldCopy;
-//}
-//------------------------------------------------
-
-//BidirIterator BidirIterator:: &operator--(){
-//}
-
-//---------------------DAVID----------------------
-//BidirIterator & operator--(){
-//  ptr--;
-//  return *this;
-//}
-//------------------------------------------------
-
-//BidirIterator BidirIterator:: operator--(int){
-//}
-
-//---------------------DAVID----------------------
-//BidirIterator operator--(int x){
-//  BidirIterator oldCopy=*this;
-//  ptr--;
-//  return oldCopy;
-//}
-//------------------------------------------------
-
-void BidirIterator::operator =(const BidirIterator it){
+BidirIterator::BidirIterator(const BidirIterator &it){
   ptr = it.ptr;
 }
 
-bool BidirIterator::operator ==(const BidirIterator it){
+double &BidirIterator::operator*(){
+  return *ptr;
+}
+
+BidirIterator &BidirIterator::operator++(){
+  ptr=ptr+1;
+  return *this;
+}
+
+BidirIterator BidirIterator :: operator++(int){
+  BidirIterator temp=ptr;
+  ptr=ptr+1;
+  return temp;
+
+}
+BidirIterator &BidirIterator::operator--(){
+  ptr=ptr-1;
+  return *this;
+}
+
+BidirIterator BidirIterator::operator--(int){
+  BidirIterator temp=ptr;
+  ptr=ptr-1;
+  return temp;
+}
+
+void BidirIterator::operator=(const BidirIterator it){
+  ptr=it.ptr;
+}
+
+bool BidirIterator::operator==(const BidirIterator it){
   return (ptr==it.ptr);
 }
 
-bool BidirIterator::operator !=(const BidirIterator it){
+bool BidirIterator::operator!=(const BidirIterator it){
   return (ptr!=it.ptr);
 }
-
 
 /*
  * CLASS SimpleVec METHODS -------------------------------------------------
  */
 
 // Iterator-related methods
-BidirIterator::iterator SimpleVec:: begin(){
-  ptr = array;
+SimpleVec::iterator SimpleVec::begin(){
+  double *temp;
+  temp=array;
+  return temp;
 }
 
-//---------------------DAVID----------------------
-//iterator begin(){
-//  return BidirIterator(array);
-//}
-//------------------------------------------------
-
-//BidirIterator::iterator SimpleVec::end(){
-//}
-
-//---------------------DAVID----------------------
-//iterator end(){
-//  return BidirIterator(array+length);
-//}
-//------------------------------------------------
+SimpleVec::iterator SimpleVec::end(){
+  double *temp;
+  temp=array+length;
+  return temp;
+}
 
 // Constructors
 SimpleVec::SimpleVec() : capacity(INITIAL_CAPACITY), length(0) {
@@ -127,15 +83,16 @@ SimpleVec::~SimpleVec() {
 }
 
 // Assignment operator
-SimpleVec & SimpleVec::operator=(const SimpleVec& rhs) {
+SimpleVec& SimpleVec::operator=(const SimpleVec& rhs) {
     delete[] array;
     capacity = rhs.capacity;
     length = rhs.length;
     array = new double[capacity];
-    for(int i = 0; i < length; ++i)
-        array[i] = rhs.array[i];
+    for(int i = 0; i < length; ++i){
+      array[i] = rhs.array[i];
+    }
+    return *this;
 }
-
 
 // Other SimpleVec methods
 void SimpleVec::push(double value) {
