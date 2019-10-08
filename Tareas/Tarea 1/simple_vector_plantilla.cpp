@@ -26,6 +26,8 @@ BidirIterator :: BidirIterator(const BidirIterator &it){
 //}
 //------------------------------------------------
 
+//Sobrecargar operadores -> https://docs.microsoft.com/es-es/cpp/cpp/increment-and-decrement-operator-overloading-cpp?view=vs-2019
+
 // BidirIterator BidirIterator:: &operator++(){
 //   ptr
 // }
