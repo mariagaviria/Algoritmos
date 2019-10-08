@@ -7,13 +7,24 @@ BidirIterator :: BidirIterator(double *beg){
   ptr = beg;
 }
 
+//---------------------DAVID----------------------
+//igual al mio
+//------------------------------------------------
+
 BidirIterator :: BidirIterator(const BidirIterator &it){
   ptr = it.ptr;
+  //this->ptr=it.ptr;
 }
 
 //double BidirIterator:: &operator*(){
 //}
 //http://www.it.uc3m.es/pbasanta/asng/course_notes/pointers_to_pointers_es.html
+
+//---------------------DAVID----------------------
+//double & operator++(){
+//  return *ptr;
+//}
+//------------------------------------------------
 
 // BidirIterator BidirIterator:: &operator++(){
 //   ptr
