@@ -11,6 +11,53 @@ BidirIterator :: BidirIterator(const BidirIterator &it){
   ptr = it.ptr;
 }
 
+//double BidirIterator:: &operator*(){
+//}
+//http://www.it.uc3m.es/pbasanta/asng/course_notes/pointers_to_pointers_es.html
+
+// BidirIterator BidirIterator:: &operator++(){
+//   ptr
+// }
+
+//---------------------DAVID----------------------
+//BidirIterator & operator++(){
+//  ptr++;
+//  return *this;
+//}
+//------------------------------------------------
+
+//BidirIterator BidirIterator:: operator++(int){
+//}
+
+//---------------------DAVID----------------------
+//BidirIterator operator++(int x){
+//  BidirIterator oldCopy=*this;
+//  ptr++;
+//  return oldCopy;
+//}
+//------------------------------------------------
+
+//BidirIterator BidirIterator:: &operator--(){
+//}
+
+//---------------------DAVID----------------------
+//BidirIterator & operator--(){
+//  ptr--;
+//  return *this;
+//}
+//------------------------------------------------
+
+//BidirIterator BidirIterator:: operator--(int){
+//}
+
+//---------------------DAVID----------------------
+//BidirIterator operator--(int x){
+//  BidirIterator oldCopy=*this;
+//  ptr--;
+//  return oldCopy;
+//}
+//------------------------------------------------
+
 void BidirIterator::operator =(const BidirIterator it){
   ptr = it.ptr;
 }
@@ -23,9 +70,7 @@ bool BidirIterator::operator !=(const BidirIterator it){
   return (ptr!=it.ptr);
 }
 
-// BidirIterator BidirIterator:: &operator++(){
-//   ptr
-// }
+
 /*
  * CLASS SimpleVec METHODS -------------------------------------------------
  */
@@ -35,9 +80,20 @@ BidirIterator::iterator SimpleVec:: begin(){
   ptr = array;
 }
 
-// BidirIterator::iterator SimpleVec::end(){
-//
-// }
+//---------------------DAVID----------------------
+//iterator begin(){
+//  return BidirIterator(array);
+//}
+//------------------------------------------------
+
+//BidirIterator::iterator SimpleVec::end(){
+//}
+
+//---------------------DAVID----------------------
+//iterator end(){
+//  return BidirIterator(array+length);
+//}
+//------------------------------------------------
 
 // Constructors
 SimpleVec::SimpleVec() : capacity(INITIAL_CAPACITY), length(0) {
