@@ -10,12 +10,12 @@ class List {
 private:
   struct Cell {
       dataType x;
-			Cell *next;
-			Cell *previous;
-		};
+      Cell *next;
+      Cell *previous;
+	};
 
-		Cell *start;
-		Cell *end;
+  Cell *start;
+  Cell *end;
 
 public:
   List();//create empty list
