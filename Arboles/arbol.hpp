@@ -47,7 +47,7 @@ void BST<T> :: insertNode(BSTNode *&t, BSTNode *p, T k){ //Estoy usando flechas 
     t = new BSTNode;
     t -> key=k;
     t -> left = t -> right = nullptr;
-    t -> parent = p;
+    t -> parent = nullptr;
   }else{
     if (k != t -> key){
       if (k < t -> key){
