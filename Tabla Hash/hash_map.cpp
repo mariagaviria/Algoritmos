@@ -89,9 +89,29 @@ bool HashMap<VT>::insert(string key, VT value){
   }
 }
 
-template <typename VT>
 void HashMap<VT>::remove(string key){
+  int pos;
+  pos = hash(key);
+  KeyValueNode<VT> *nw;
+  nw =search_bucket(pos, key);
 
+  //KeyValueNode<VT> *copy;
+  //copy = nw;
+  if (search(key)==false){
+    throw runtime_error("remove: the key is not in table.\n");
+  }else{
+    if(search(key) == true){
+      KeyValueNode<VT> *copy;
+      if(nw->key== key){
+        copy = nw;
+        copy->key = nw->key;
+        cout<<"Valor de nw antes de borrar : "<< nw->key<<endl;
+        copy-> next = nw ->next;
+        delete nw;
+        count--;
+      }
+    }
+  }
 }
 
 template <typename VT>
