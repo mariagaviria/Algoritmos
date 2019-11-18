@@ -10,19 +10,20 @@ HashMap<VT>::HashMap(VT def){
 }
 
 template <typename VT>
-HashMap>VT>::~HashMap(){
+HashMap<VT>::~HashMap(){
   tableSize = TABLE_SIZE;
   for (int i = 0; i < tableSize; i++){
     KeyValueNode *recent = table[i];
     while(recent != nullptr){
       remove(recent->key);
+    }
   }
   delete[] table;
   cout << "Instance deleted." << endl;
 }
 
 template <typename VT>
-KeyValueNode<VT>* HashMap<VT>::search_bucket(int index, string key){
+KeyValueNode* HashMap<VT>::search_bucket(int index, string key){
   KeyValueNode *recent = table[index];
   while (recent != nullptr){
     if (recent->key == key){
@@ -51,7 +52,7 @@ void HashMap<VT>::clear(){
 template <typename VT>
 VT HashMap<VT>::get(string key){
   int index = hash(key);
-  KeyValueNode *search = search_bucket(index, key)
+  KeyValueNode *search = search_bucket(index, key);
   if (search == nullptr){
     return notfound;
   }else{
@@ -69,7 +70,7 @@ template <typename VT>
 bool HashMap<VT>::insert(string key, VT value){
   bool find = search(key);
   if (find == false){
-    int index = hash(key)
+    int index = hash(key);
     KeyValueNode* indexpointer = table[index];
     if(indexpointer == nullptr){
       KeyValueNode* newbox = new KeyValueNode;
@@ -77,6 +78,7 @@ bool HashMap<VT>::insert(string key, VT value){
       newbox->key = key;
       newbox->value = value;
       newbox->next = nullptr;
+      table[index] = newbox;
     }else{
       KeyValueNode* oldbox = indexpointer;
       KeyValueNode* newbox = new KeyValueNode;
@@ -84,6 +86,7 @@ bool HashMap<VT>::insert(string key, VT value){
       newbox->key = key;
       newbox->value = value;
       newbox->next = oldbox;
+      table[index] = newbox;
     }
     count++;
     return true;
@@ -94,10 +97,11 @@ bool HashMap<VT>::insert(string key, VT value){
   }
 }
 
+template <typename VT>
 void HashMap<VT>::remove(string key){
   int pos;
   pos = hash(key);
-  KeyValueNode<VT> *nw;
+  KeyValueNode *nw;
   nw =search_bucket(pos, key);
 
   //KeyValueNode<VT> *copy;
@@ -106,7 +110,7 @@ void HashMap<VT>::remove(string key){
     throw runtime_error("remove: the key is not in table.\n");
   }else{
     if(search(key) == true){
-      KeyValueNode<VT> *copy;
+      KeyValueNode *copy;
       if(nw->key== key){
         copy = nw;
         copy->key = nw->key;
