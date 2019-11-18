@@ -7,7 +7,7 @@
 #include <limits>
 using namespace std;
 
-const int TABLE_SIZE = 1013; //prime number
+const int TABLE_SIZE = 10; //prime number
 
 template<typename VT>
 class HashMap{
@@ -15,11 +15,11 @@ private:
   struct KeyValueNode{
     string key;
     VT value;
-    KeyValueNode<VT> *next;
+    KeyValueNode *next;
   };
-  
+
   //pointer to pointers to buckets
-  KeyValueNode<VT> **table;
+  KeyValueNode **table;
 
   int tableSize; //size of the pointer table
   int count;    //number of the elements in table
@@ -30,7 +30,7 @@ private:
   //search for the "key" inside the bucket at index
   //"index" of the table
   //return the elements if found, or nullptr otherwise
-  KeyValueNode<VT>* search_bucket(int index, string key);
+  KeyValueNode* search_bucket(int index, string key);
 
   //hash function
   unsigned int hash(string key){
@@ -52,7 +52,7 @@ public:
   //chained hash search: search for element with key = key
   VT get(string key);
   //return true if the key is in table
-  bool search(stirng key);
+  bool search(string key);
   //chained hash insert: insert at the head of bucket
   bool insert(string key, VT value);
   // chained hash remove: remove element with key = key
