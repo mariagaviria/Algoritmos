@@ -11,7 +11,12 @@ HashMap<VT>::HashMap(VT def){
 
 template <typename VT>
 HashMap>VT>::~HashMap(){
-  clear();
+  tableSize = TABLE_SIZE;
+  for (int i = 0; i < tableSize; i++){
+    KeyValueNode *recent = table[i];
+    while(recent != nullptr){
+      remove(recent->key);
+  }
   delete[] table;
   cout << "Instance deleted." << endl;
 }
